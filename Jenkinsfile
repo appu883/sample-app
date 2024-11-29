@@ -41,25 +41,7 @@ pipeline {
             }
         }
 
-        stage('Cleanup Existing Container on Server 1') {
-            steps {
-                echo "Stopping and removing any existing container on Server 1..."
-                sh """
-                docker stop sample-app || true
-                docker rm sample-app || true
-                """
-            }
-        }
-
-        stage('Run Container on Server 1') {
-            steps {
-                echo "Running the Docker container on Server 1..."
-                sh """
-                docker run -itd --name sample-app -p 3001:3001 ${DOCKER_IMAGE}:latest
-                """
-            }
-        }
-
+    
         stage('Deploy to Server 2') {
             steps {
                 echo "Deploying the Docker image to Server 2..."
