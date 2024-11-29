@@ -45,8 +45,8 @@ pipeline {
             steps {
                 echo "Stopping and removing any existing container on Server 1..."
                 sh """
-                docker stop sampleapp || true
-                docker rm sampleapp || true
+                docker stop sample-app || true
+                docker rm sample-app || true
                 """
             }
         }
@@ -55,7 +55,7 @@ pipeline {
             steps {
                 echo "Running the Docker container on Server 1..."
                 sh """
-                docker run -itd --name sampleapp -p 3001:3001 ${DOCKER_IMAGE}:latest
+                docker run -itd --name sample-app -p 3001:3001 ${DOCKER_IMAGE}:latest
                 """
             }
         }
@@ -68,9 +68,9 @@ pipeline {
                     sh """
                     ssh -o StrictHostKeyChecking=no ${SERVER_2_USER}@${SERVER_2_IP} '
                         docker pull ${DOCKER_IMAGE}:latest && 
-                        docker stop sampleapp || true &&
-                        docker rm sampleapp || true &&
-                        docker run -d --name sampleapp -p 3000:3000 ${DOCKER_IMAGE}:latest
+                        docker stop sample-app || true &&
+                        docker rm sample-app || true &&
+                        docker run -d --name sample-app -p 3001:3001 ${DOCKER_IMAGE}:latest
                     '
                     """
                 }
