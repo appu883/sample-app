@@ -70,7 +70,7 @@ pipeline {
                         docker pull ${DOCKER_IMAGE}:latest && 
                         docker stop sample-app || true &&
                         docker rm sample-app || true &&
-                        docker run -d --name sample-app -p 3001:3001 ${DOCKER_IMAGE}:latest
+                        docker run -d --name sample-app -p 3001:3000 ${DOCKER_IMAGE}:latest
                     '
                     """
                 }
