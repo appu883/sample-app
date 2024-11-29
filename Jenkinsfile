@@ -55,7 +55,7 @@ pipeline {
             steps {
                 echo "Running the Docker container on Server 1..."
                 sh """
-                docker run -itd --name sampleapp -p 3000:3000 ${DOCKER_IMAGE}:latest
+                docker run -itd --name sampleapp -p 3001:3001 ${DOCKER_IMAGE}:latest
                 """
             }
         }
