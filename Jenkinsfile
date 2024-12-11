@@ -8,7 +8,6 @@ pipeline {
         SERVER_2_USER = "ubuntu"
         SERVER_2_IP = "172.31.5.201"
     }
-
     stages {
         stage('Git Checkout') {
             steps {
