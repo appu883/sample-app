@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     environment {
         DOCKER_IMAGE = "appu883/sample-app"
         DOCKER_CREDENTIALS_ID = "dockerhub-token"
